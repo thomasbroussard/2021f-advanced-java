@@ -8,6 +8,7 @@ import fr.epita.junit.demo.datamodel.Passenger;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -33,7 +34,6 @@ public class TestHTTPService2 {
 
                 ObjectMapper mapper = new ObjectMapper();
                 String response = mapper.writeValueAsString(passenger);
-
                 byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
                 exchange.sendResponseHeaders(200, bytes.length);
                 exchange.getResponseBody().write(bytes);

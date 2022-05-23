@@ -1,13 +1,21 @@
 package fr.epita.junit.demo.services;
 
 import fr.epita.junit.demo.datamodel.Passenger;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.sql.*;
 
 public class PassengerDAOTest {
 
+
+
+    static{
+        System.setProperty("conf.file","src/test/resources/conf.properties");
+    }
 
     private Connection cnt;
 
@@ -21,6 +29,7 @@ public class PassengerDAOTest {
 
 
     @Test
+    @DisplayName("when a passenger is inserted with valid values in the database, then it should be found")
     public void test() throws SQLException {
 
         //given
@@ -38,9 +47,7 @@ public class PassengerDAOTest {
         while (resultSet.next()) {
             retrievedName = resultSet.getString("name");
         }
-        if (retrievedName == null) {
-            throw new RuntimeException("the name test was not found, expected to be not null");
-        }
+        Assertions.assertNotNull(retrievedName);
     }
 
 

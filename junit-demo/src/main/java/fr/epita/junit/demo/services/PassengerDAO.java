@@ -12,7 +12,8 @@ public class PassengerDAO {
 
 
     public void insert(Passenger passenger) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "username", "password");
+        Configuration conf = Configuration.getInstance();
+        Connection connection = DriverManager.getConnection(conf.getDBUrl(), conf.getDBUser(), conf.getDBPassword());
         PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO PASSENGERS(name,age,pclass, survived, gender) values(?,?,?,?,?)");
 
         preparedStatement.setString(1, passenger.getName());
