@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.io.File;
 import java.sql.*;
 
+
 public class PassengerDAOTest {
-
-
 
     static{
         System.setProperty("conf.file","src/test/resources/conf.properties");
@@ -35,8 +36,11 @@ public class PassengerDAOTest {
         //given
         Passenger passenger = new Passenger("test", 30, 3, true, 1);
 
+        Configuration conf = Configuration.getInstance();
+        DriverManagerDataSource ds = new DriverManagerDataSource(conf.getDBUrl(), conf.getDBUser(), conf.getDBPassword());
+
         //when
-        PassengerDAO dao = new PassengerDAO();
+        PassengerDAO dao = new PassengerDAO(ds);
         dao.insert(passenger);
 
 

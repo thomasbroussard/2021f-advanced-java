@@ -1,5 +1,6 @@
 package fr.epita.conf;
 
+import fr.epita.junit.demo.services.PassengerDAO;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,5 +41,10 @@ public class ApplicationConfiguration {
     public DataSource dataSource(@Qualifier("conf.mainConf") fr.epita.junit.demo.services.Configuration conf){
         return new DriverManagerDataSource(conf.getDBUrl(), conf.getDBUser(), conf.getDBPassword());
 
+    }
+
+    @Bean("services.dao.passengersDAO")
+    public PassengerDAO getPassengerDao(DataSource ds){
+        return new PassengerDAO(ds);
     }
 }
