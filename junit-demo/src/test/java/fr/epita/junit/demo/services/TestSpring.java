@@ -9,13 +9,27 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {ApplicationConfiguration.class})
 public class TestSpring {
 
+
+    static {
+        System.setProperty("conf.file", "src/test/resources/conf.properties");
+    }
+
     @Inject
+    @Named("userName")
     String userName;
+
+
+    @Inject
+    @Named("db.mainDatasource")
+    DataSource dataSource;
 
 
     @Test
@@ -24,5 +38,21 @@ public class TestSpring {
         System.out.println(userName);
     }
 
+    @Test
+    public void testConnectionFromInject() throws SQLException {
+        Assertions.assertNotNull(dataSource);
+        Connection connection = dataSource.getConnection();
+        System.out.println(connection.getSchema());
+        connection.close();
+    }
+
+
+    @Test
+    public void testConnectionFromInjectWithClose() throws SQLException {
+        Assertions.assertNotNull(dataSource);
+        Connection connection = dataSource.getConnection();
+        System.out.println(connection.getSchema());
+        connection.close();
+    }
 
 }
