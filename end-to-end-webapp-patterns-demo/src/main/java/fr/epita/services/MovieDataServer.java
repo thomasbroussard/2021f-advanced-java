@@ -47,7 +47,7 @@ public class MovieDataServer {
                     case "GET":
                         ObjectMapper mapper = new ObjectMapper();
                         String request = requestURI.toString();
-                        Pattern pattern = Pattern.compile("/movies/(.*)");
+                        Pattern pattern = Pattern.compile("/movies/(.*)\\??");
                         Matcher matcher = pattern.matcher(request);
                         // case where we want a single movie
                         if (matcher.matches()){

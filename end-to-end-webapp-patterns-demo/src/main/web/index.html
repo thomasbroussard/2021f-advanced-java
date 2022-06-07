@@ -1,0 +1,66 @@
+<html>
+<head>
+</head>
+<body>
+<div>
+    <form>
+        <div>
+            <label for="user-input">user</label>
+            <input id="user-input" name="user" type="text"/>
+        </div>
+        <div>
+            <label for="user-password">password</label>
+            <input id="user-password" name="password" type="password"/>
+        </div>
+    </form>
+    <button id="submit-button">Log in</button>
+    <button id="getMovies-button">Get Movies</button>
+</div>
+
+<script type="text/javascript">
+    let accessToken = "";
+    let refreshToken = "";
+
+    document.getElementById("submit-button").addEventListener("click", ev => {
+        let user = document.getElementById("user-input").value;
+        let password = document.getElementById("user-password").value;
+        var data = "client_id=test-application&grant_type=password&username=" + user + "&password=" + password;
+        var xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("readystatechange", function (ev) {
+            if (this.readyState === 4) {
+                let value = JSON.parse(ev.target.response);
+
+                accessToken = value.access_token;
+                refreshToken = value.refresh_token;
+                console.log(value.access_token);
+            }
+        });
+
+        xhr.open("POST", "http://localhost:8080/auth/realms/2021f-realm/protocol/openid-connect/token");
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send(data);
+    })
+
+    document.getElementById("getMovies-button").addEventListener("click", ev => {
+            var xhr = new XMLHttpRequest();
+
+            xhr.addEventListener("readystatechange", function (ev) {
+                if (this.readyState === 4) {
+                    console.log(ev.target);
+                }
+            });
+            console.log("clicked! accesstoken = " + accessToken);
+            xhr.open("GET", "http://localhost:8080/apiman-gateway/2021f-students/movies/1.1/1?apikey=0048ab3f-c17d-4d6a-bad7-ef59c523c552");
+            xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
+
+            xhr.send();
+
+        }
+    )
+
+
+</script>
+</body>
+
+</html>
