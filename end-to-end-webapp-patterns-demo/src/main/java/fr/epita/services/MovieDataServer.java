@@ -15,6 +15,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class MovieDataServer {
 
@@ -22,8 +25,8 @@ public class MovieDataServer {
     public static List<Movie> movies = new ArrayList<>();
 
     static {
-        movies.add(new Movie(0,"the Matrix"));
         movies.add(new Movie(1,"Star Wars"));
+        movies.add(new Movie(0,"the Matrix"));
         movies.add(new Movie(2,"Alien"));
     }
 
@@ -43,7 +46,18 @@ public class MovieDataServer {
 
                     case "GET":
                         ObjectMapper mapper = new ObjectMapper();
-                        response = mapper.writeValueAsString(movies);
+                        String request = requestURI.toString();
+                        Pattern pattern = Pattern.compile("/movies/(.*)");
+                        Matcher matcher = pattern.matcher(request);
+                        // case where we want a single movie
+                        if (matcher.matches()){
+                            String id = matcher.group(1);
+                            List<Movie> collect = movies.stream().filter(m -> m.getId() == Integer.parseInt(id)).collect(Collectors.toList());
+                            response = mapper.writeValueAsString(collect);
+                        } else { //or we want all the list of movies
+                            //TODO check if the pattern is correct
+                            response = mapper.writeValueAsString(movies);
+                        }
                         break;
                     case "POST":
                         break;
