@@ -1,0 +1,53 @@
+C:\Users\Présentation\.jdks\temurin-11.0.14.1\bin\java.exe "-Dmaven.multiModuleProjectDirectory=C:\Users\Présentation\Documents\EPITA Content\workspaces\2021f-advanced-java\mob-programming-correction" "-Dmaven.home=C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\plugins\maven\lib\maven3" "-Dclassworlds.conf=C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\plugins\maven\lib\maven3\bin\m2.conf" "-Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\plugins\maven\lib\maven-event-listener.jar" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\lib\idea_rt.jar=63944:C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2021.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds.license" org.codehaus.classworlds.Launcher -Didea.version=2021.3.2 install
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ---------------< org.example:mob-programming-correction >---------------
+[INFO] Building mob-programming-correction 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ mob-programming-correction ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 0 resource
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ mob-programming-correction ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 3 source files to C:\Users\Présentation\Documents\EPITA Content\workspaces\2021f-advanced-java\mob-programming-correction\target\classes
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ mob-programming-correction ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource
+[INFO]
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ mob-programming-correction ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 1 source file to C:\Users\Présentation\Documents\EPITA Content\workspaces\2021f-advanced-java\mob-programming-correction\target\test-classes
+[INFO]
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ mob-programming-correction ---
+[INFO] Surefire report directory: C:\Users\Présentation\Documents\EPITA Content\workspaces\2021f-advanced-java\mob-programming-correction\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running fr.epita.mob.tests.TestMVN2
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO]
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ mob-programming-correction ---
+[INFO] Building jar: C:\Users\Présentation\Documents\EPITA Content\workspaces\2021f-advanced-java\mob-programming-correction\target\mob-programming-correction-1.0-SNAPSHOT.jar
+[INFO]
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ mob-programming-correction ---
+[INFO] Installing C:\Users\Présentation\Documents\EPITA Content\workspaces\2021f-advanced-java\mob-programming-correction\target\mob-programming-correction-1.0-SNAPSHOT.jar to C:\Users\Présentation\.m2\repository\org\example\mob-programming-correction\1.0-SNAPSHOT\mob-programming-correction-1.0-SNAPSHOT.jar
+[INFO] Installing C:\Users\Présentation\Documents\EPITA Content\workspaces\2021f-advanced-java\mob-programming-correction\pom.xml to C:\Users\Présentation\.m2\repository\org\example\mob-programming-correction\1.0-SNAPSHOT\mob-programming-correction-1.0-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.592 s
+[INFO] Finished at: 2022-06-13T10:46:58+02:00
+[INFO] ------------------------------------------------------------------------
+
+Process finished with exit code 0
