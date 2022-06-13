@@ -13,11 +13,14 @@ import java.util.List;
 
 public class ContactCsvDAO {
 
-    private static final String LOCATION = "mob-programming-correction/src/test/resources/17-contacts.csv";
+    private final String location;
 
+    public ContactCsvDAO(String location){
+        this.location = location;
+    }
 
     public List<Contact> readAll() throws UnableToLoadContactsException {
-        File file = new File(LOCATION);
+        File file = new File(this.location);
         List<String> rawStringList = null;
         try {
             rawStringList = Files.readAllLines(file.toPath());

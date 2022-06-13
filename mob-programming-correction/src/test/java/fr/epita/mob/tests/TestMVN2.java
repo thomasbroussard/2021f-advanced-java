@@ -10,16 +10,17 @@ public class TestMVN2 {
 
     public static void main(String[] args) throws Exception {
         //given
-        ContactCsvDAO someDao = new ContactCsvDAO();
-
+        String filePath = ContactCsvDAO.class.getResource("/17-contacts.csv").toURI().getPath();
+        ContactCsvDAO someDao = new ContactCsvDAO(filePath);
 
         //when
+
         List<Contact> contactList = someDao.readAll();
         someDao.sort(contactList);
 
 
         //then
-        if (!(contactList.get(0).getEmail().equals("lpaprocki@hotmail.com"))){
+        if (!(contactList.get(0).getEmail().equals("lpaprocki@hotmail.com"))) {
             throw new Exception("check not passed for TestMVN2");
         }
 
