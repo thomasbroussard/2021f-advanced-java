@@ -1,9 +1,44 @@
 package fr.epita.junit.demo.datamodel;
 
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+
+@Entity
+@Table(name="PASSENGERS")
 public class Passenger {
+
+    @Id
+    private Long id;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "AGE")
     private int age;
+
+    @Column(name = "PCLASS")
     private int pclass;
+
+    @Column(name = "SURVIVED")
+    private boolean survived;
+
+    @Column(name = "GENDER")
+    private int gender;
+
+    protected Passenger(){
+    }
+
+    public Passenger(String name, int age, int pclass, boolean survived, int gender) {
+        this.name = name;
+        this.age = age;
+        this.pclass = pclass;
+        this.survived = survived;
+        this.gender = gender;
+    }
 
     public String getName() {
         return name;
@@ -42,17 +77,6 @@ public class Passenger {
     }
 
     public void setGender(int gender) {
-        this.gender = gender;
-    }
-
-    private boolean survived;
-    private int gender;
-
-    public Passenger(String name, int age, int pclass, boolean survived, int gender) {
-        this.name = name;
-        this.age = age;
-        this.pclass = pclass;
-        this.survived = survived;
         this.gender = gender;
     }
 }

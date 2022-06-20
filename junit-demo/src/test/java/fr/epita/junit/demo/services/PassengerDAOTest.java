@@ -1,10 +1,7 @@
 package fr.epita.junit.demo.services;
 
 import fr.epita.junit.demo.datamodel.Passenger;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -54,5 +51,12 @@ public class PassengerDAOTest {
         Assertions.assertNotNull(retrievedName);
     }
 
+
+    @AfterEach
+    public void afterEach() throws SQLException {
+        PreparedStatement preparedStatement = cnt.prepareStatement("DROP TABLE PASSENGERS");
+
+        this.cnt.close();
+    }
 
 }

@@ -13,6 +13,7 @@
         <module>end-to-end-webapp-patterns-demo</module>
         <module>mob-programming-correction</module>
         <module>databases-connectors</module>
+        <module>jpa-test</module>
     </modules>
 
     <properties>
