@@ -1,6 +1,7 @@
 package fr.epita.jpa.tests;
 
 import org.hibernate.dialect.H2Dialect;
+import org.hibernate.dialect.PostgreSQL10Dialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -27,7 +28,7 @@ public class BaseTestConfig {
         sessionFactory.setPackagesToScan("fr.epita.jpa.datamodel");
 
         Properties properties = new Properties();
-        properties.setProperty("hibernate.properties", H2Dialect.class.getName());
+        properties.setProperty("hibernate.properties", PostgreSQL10Dialect.class.getName());
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.show_sql","true");
         sessionFactory.setHibernateProperties(properties);
