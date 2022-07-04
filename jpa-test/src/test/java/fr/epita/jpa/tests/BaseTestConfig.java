@@ -1,7 +1,13 @@
 package fr.epita.jpa.tests;
 
+import fr.epita.jpa.datamodel.Contact;
+import fr.epita.jpa.services.data.ContactJPADAO;
+import fr.epita.jpa.services.data.JPADAO;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.dialect.H2Dialect;
 import org.hibernate.dialect.PostgreSQL10Dialect;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -33,6 +39,23 @@ public class BaseTestConfig {
         properties.setProperty("hibernate.show_sql","true");
         sessionFactory.setHibernateProperties(properties);
         return sessionFactory;
+    }
+
+
+    @Bean
+    public JPADAO<Contact> getContactDAO(SessionFactory sf){
+        return new ContactJPADAO(sf);
+    }
+
+
+    @Bean
+    public JPADAO<Contact> getContactDAOOverridden(SessionFactory sf){
+        return new JPADAO<Contact>(sf) {
+            @Override
+            public Query<Contact> getQuery(Contact criteria, Session session) {
+                return null;
+            }
+        };
     }
 
 }

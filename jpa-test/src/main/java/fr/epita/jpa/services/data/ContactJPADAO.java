@@ -8,23 +8,15 @@ import org.hibernate.query.Query;
 
 import java.util.List;
 
-public class ContactJPADAO {
-
-    SessionFactory factory;
+public class ContactJPADAO extends JPADAO<Contact>{
 
 
-    public ContactJPADAO(SessionFactory factory){
-        this.factory = factory;
+    public ContactJPADAO(SessionFactory sf) {
+        super(sf);
     }
 
 
-    public void create(Contact contact){
-        Session session = this.factory.openSession();
-        session.persist(contact);
-    }
-
-    public List<Contact> search(Contact criteria){
-        Session session = this.factory.openSession();
+    public Query<Contact> getQuery(Contact criteria, Session session) {
         Query<Contact> query = session.createQuery(
                 "from Contact c " +
                         "where (:name is null or :name = c.name) " +
@@ -33,13 +25,6 @@ public class ContactJPADAO {
 
         query.setParameter("name", criteria.getName());
         query.setParameter("address", criteria.getAddress());
-
-        return query.list();
-
-
+        return query;
     }
-
-
-
-
 }

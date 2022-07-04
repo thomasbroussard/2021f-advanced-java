@@ -1,3 +1,5 @@
+package fr.epita.jpa.tests;
+
 import fr.epita.jpa.datamodel.Contact;
 import fr.epita.jpa.tests.BaseTestConfig;
 
