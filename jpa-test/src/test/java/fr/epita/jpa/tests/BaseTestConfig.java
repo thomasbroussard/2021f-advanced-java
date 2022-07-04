@@ -47,15 +47,15 @@ public class BaseTestConfig {
         return new ContactJPADAO(sf);
     }
 
-
-    @Bean
-    public JPADAO<Contact> getContactDAOOverridden(SessionFactory sf){
-        return new JPADAO<Contact>(sf) {
-            @Override
-            public Query<Contact> getQuery(Contact criteria, Session session) {
-                return null;
-            }
-        };
-    }
+//  Anonymous class instantiation
+//    @Bean
+//    public JPADAO<Contact> getContactDAOOverridden(SessionFactory sf){
+//        return new JPADAO<Contact>(sf) {
+//            @Override
+//            public Query<Contact> getQuery(Contact criteria, Session session) {
+//                return null;
+//            }
+//        };
+//    }
 
 }

@@ -32,7 +32,13 @@ public class TestGenericJPA_Usage {
         contact.setId(1L);
 
         //when
-        contactJPADAO.create(new Contact());
+        Contact something = new Contact();
+        contactJPADAO.create(something);
+
+        something.setName("blabla");
+        contactJPADAO.update(something);
+
+        contactJPADAO.delete(something);
 
     }
 

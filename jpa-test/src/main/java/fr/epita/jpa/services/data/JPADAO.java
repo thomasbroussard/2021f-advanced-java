@@ -16,12 +16,37 @@ public abstract class JPADAO<T> {
     }
 
     public void create(T something){
-        Session session = this.factory.openSession();
+        Session session = getSession();
         session.persist(something);
     }
 
+    public void delete(T something){
+        Session session = getSession();
+        session.delete(something);
+    }
+
+
+    public void update(T something){
+        Session session = getSession();
+        session.update(something);
+    }
+
+    private Session getSession() {
+        Session currentSession = null;
+        try {
+            currentSession = this.factory.getCurrentSession();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        if (currentSession != null && currentSession.isOpen()) {
+            return currentSession;
+        } else {
+            return this.factory.openSession();
+        }
+    }
+
     public List<T> search(T criteria){
-        Session session = this.factory.openSession();
+        Session session = getSession();
         Query<T> query = getQuery(criteria, session);
         return query.list();
 
