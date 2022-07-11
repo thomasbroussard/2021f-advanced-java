@@ -10,5 +10,6 @@ public class Application {
 
     public static void main(String[] args) {
         ApplicationContext app = SpringApplication.run(Application.class);
+
     }
 }
