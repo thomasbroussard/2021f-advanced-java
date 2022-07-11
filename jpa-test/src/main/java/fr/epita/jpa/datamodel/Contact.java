@@ -2,6 +2,7 @@ package fr.epita.jpa.datamodel;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="CONTACTS")
@@ -9,13 +10,17 @@ public class Contact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name ="ID")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "NAME")
     private String name;
 
-    @Column(name="address")
+    @Column(name="ADDRESS")
     private String address;
+
+    @ManyToOne
+    private Job job;
 
 
     public Long getId() {
@@ -40,5 +45,14 @@ public class Contact {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
     }
 }

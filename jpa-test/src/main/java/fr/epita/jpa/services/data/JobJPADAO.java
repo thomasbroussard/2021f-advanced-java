@@ -15,6 +15,7 @@ public class JobJPADAO extends JPADAO<Job>{
 
     @Override
     public Query<Job> getQuery(Job criteria, Session session) {
+        //TODO implement
        return null;
     }
 }

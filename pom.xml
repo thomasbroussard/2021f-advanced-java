@@ -14,6 +14,7 @@
         <module>mob-programming-correction</module>
         <module>databases-connectors</module>
         <module>jpa-test</module>
+        <module>spring-boot-demo</module>
     </modules>
 
     <properties>
