@@ -1,5 +1,7 @@
 package fr.epita.mob.datamodel;
 
+import java.util.Objects;
+
 public class Contact {
 
 
@@ -109,5 +111,28 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Contact contact = (Contact) o;
+        return Objects.equals(firstName, contact.firstName) && Objects.equals(lastName, contact.lastName) && Objects.equals(phone1, contact.phone1) && Objects.equals(email, contact.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, phone1, email);
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone1='" + phone1 + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
