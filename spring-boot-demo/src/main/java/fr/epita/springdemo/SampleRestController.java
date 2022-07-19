@@ -2,6 +2,7 @@ package fr.epita.springdemo;
 
 
 import fr.epita.springdemo.datamodel.Person;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/baseurl/")
 public class SampleRestController {
 
+
+    @Autowired
+    private UserRepository repo;
+
     @GetMapping("/get-sample")
     public ResponseEntity<String> onGet(){
+        System.out.println(repo);
         return ResponseEntity.ok("hello");
     }
 
@@ -23,6 +29,7 @@ public class SampleRestController {
         //{'name':'test'}
 
         System.out.println(contact.getName());
+
     }
 
 
