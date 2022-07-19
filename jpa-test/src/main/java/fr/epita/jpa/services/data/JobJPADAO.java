@@ -1,6 +1,5 @@
 package fr.epita.jpa.services.data;
 
-import fr.epita.jpa.datamodel.Contact;
 import fr.epita.jpa.datamodel.Job;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -16,6 +15,8 @@ public class JobJPADAO extends JPADAO<Job>{
     @Override
     public Query<Job> getQuery(Job criteria, Session session) {
         //TODO implement
-       return null;
+        Query<Job> query = session.createQuery("from Job where id = :id");
+        query.setParameter("id", criteria.getId());
+        return query;
     }
 }
