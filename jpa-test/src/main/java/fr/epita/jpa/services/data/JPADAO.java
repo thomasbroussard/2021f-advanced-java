@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public abstract class JPADAO<T> {

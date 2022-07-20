@@ -33,7 +33,13 @@ public class BaseTestConfig {
 
     @Bean("db.mainDatasource")
     public DataSource dataSource() {
-        return new DriverManagerDataSource("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "test", "test");
+        DriverManagerDataSource dataSource = new DriverManagerDataSource("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", "test", "test");
+
+        //if necessary we can fill the data base with some initial data by getting a connection from the datasource
+
+        return dataSource;
+
+
     }
 
     @Bean

@@ -13,6 +13,7 @@ public class ContactJPADAO extends JPADAO<Contact>{
 
     public ContactJPADAO(SessionFactory sf) {
         super(sf);
+
     }
 
 

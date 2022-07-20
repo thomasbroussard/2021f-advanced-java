@@ -2,9 +2,7 @@ package fr.epita.jpa.services.data;
 
 import fr.epita.jpa.datamodel.Contact;
 import fr.epita.jpa.datamodel.Job;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -25,8 +23,7 @@ public class ContactRepository {
     }
 
     @Transactional
-    public void saveContactAndJob(Contact contact, Job job) {
-
+    public void saveContactAndJob(Contact contact, Job job ) {
         List<Job> searchResult = this.jobDAO.search(job);
         Job foundJob = null;
         if (searchResult == null || searchResult.isEmpty()) {
@@ -44,22 +41,6 @@ public class ContactRepository {
     }
 
 
-
-
-    //todo : remove duplicate
-    private Session getSession() {
-        Session currentSession = null;
-        try {
-            currentSession = this.sessionFactory.getCurrentSession();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        if (currentSession != null && currentSession.isOpen()) {
-            return currentSession;
-        } else {
-            return this.sessionFactory.openSession();
-        }
-    }
 
 
 }
